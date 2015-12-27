@@ -3,7 +3,7 @@
 class ActionCableChat
   def initialize(app, options={})
     @app = app
-    ActionCable.server.config.allowed_request_origins = ["http://lf-chatter.herokuapp.com"]
+    ActionCable.server.config.allowed_request_origins = ["http://world-oyster.herokuapp.com"]
   end
 
   def call(env)
