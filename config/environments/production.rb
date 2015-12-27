@@ -82,5 +82,5 @@ Rails.application.configure do
 
 
   config.middleware.use ActionCableChat
-  config.web_socket_server_url = "ws://lf-chatter.herokuapp.com/"
+  config.web_socket_server_url = "ws://world-oyster.herokuapp.com/"
 end
