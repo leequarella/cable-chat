@@ -5,4 +5,13 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
     objDiv.scrollTop = objDiv.scrollHeight
 
   renderMessage: (data) ->
-    "<p><b>[#{data.username}]:</b> #{data.message}</p>"
+    "<div class='inbound-message'>
+      <div class='chat-timestamp'>
+        #{strftime("%H:%M%P")}
+      </div>
+      <p>
+        <b>[#{data.username}]:</b>
+        #{data.message}
+      </p>
+    </div>
+    "

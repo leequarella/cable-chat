@@ -7,5 +7,6 @@
 
 :coffeescript
   $ ->
+    $("#messages").click -> $("#message_body").focus()
     $("#messages form").bind "ajax:complete", (event,xhr,status) ->
       $('#message_body').val('')

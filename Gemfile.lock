@@ -151,6 +151,7 @@ GEM
     rails-assets-jquery (2.1.4)
     rails-assets-jquery-ui (1.11.4)
       rails-assets-jquery (>= 1.6)
+    rails-assets-strftime (0.9.2)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -223,6 +224,7 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-jquery!
   rails-assets-jquery-ui!
+  rails-assets-strftime!
   rails_12factor
   spring
   turbolinks
