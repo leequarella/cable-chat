@@ -1,0 +1,19 @@
+.row
+  .col-sm-12
+    = link_to messages_path, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to edit_message_path(@message), class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
+    %h1 Message
+
+.row
+  .col-sm-4
+    %table.table
+      %tr
+        %th From user
+        %td= @message.from_user_id
+      %tr
+        %th Body
+        %td= @message.body

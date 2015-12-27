@@ -1,0 +1,25 @@
+%nav.header.navbar.navbar-default{role: 'navigation'}
+  .container-fluid
+    %button.pull-right{type: "button", class: "navbar-toggle collapsed",
+    "data-toggle" => "collapse", "data-target" => "#navbar-collapsable",
+    "aria-expanded"=>"false"}
+      %span{class: "sr-only"}
+        Toggle navigation
+      %span{class: "icon-bar"}
+      %span{class: "icon-bar"}
+      %span{class: "icon-bar"}
+    .navbar-header
+      .navbar-brand
+        =link_to "Oyster", root_path
+    -if current_user && current_user.active?
+      #navbar-collapsable.collapse.navbar-collapse
+        %ul.nav.navbar-nav.navbar-right
+          %li.dropdown
+            %a{"data-toggle" => "dropdown", href: '#'}
+              = current_user.email
+              %span.caret
+            %ul.dropdown-menu
+              %li{role: 'presentation'}= link_to "Home", root_path
+              %li{role: 'presentation'}= link_to "My Account", edit_user_path(current_user)
+              %li.divider{role: 'presentation'}
+              %li{role: 'presentation'}=link_to "Log Out", logout_path

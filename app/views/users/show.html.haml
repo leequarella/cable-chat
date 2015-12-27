@@ -1,0 +1,25 @@
+.row
+  .col-sm-12
+    = link_to users_path, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to edit_user_path(@user), class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
+    %h1 User
+
+.row
+  .col-sm-4
+    %table.table
+      %tr
+        %th First name
+        %td= @user.first_name
+      %tr
+        %th Last name
+        %td= @user.last_name
+      %tr
+        %th Email
+        %td= @user.email
+      %tr
+        %th Password digest
+        %td= @user.password_digest

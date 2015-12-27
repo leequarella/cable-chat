@@ -1,0 +1,11 @@
+#messages
+  #inbound
+
+  = form_for :message, url: messages_path, remote: true, id: 'messages-form' do |f|
+    = f.text_field :body, autocomplete: "off", class: "form-control"
+    = f.submit 'Send message', class: "btn btn-default btn-block"
+
+:coffeescript
+  $ ->
+    $("#messages form").bind "ajax:complete", (event,xhr,status) ->
+      $('#message_body').val('')

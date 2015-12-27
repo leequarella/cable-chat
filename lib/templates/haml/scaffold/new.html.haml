@@ -1,0 +1,8 @@
+.row
+  .col-sm-4
+    = link_to <%= index_helper %>_path, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    %h1 New <%= singular_table_name.capitalize.tr("_", " ") %>
+
+= render 'form'

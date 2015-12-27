@@ -1,0 +1,11 @@
+.row
+  .col-sm-4
+    = link_to messages_path, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to @message, class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-info-sign
+      Show
+    %h1 Editing Message
+
+= render 'form'

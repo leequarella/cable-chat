@@ -1,0 +1,18 @@
+.row
+  .col-sm-12
+    = link_to <%= index_helper %>_path, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      Back
+    = link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-primary' do
+      %span.glyphicon.glyphicon-pencil
+      Edit
+    %h1 <%= singular_table_name.capitalize.tr("_", " ") %>
+
+.row
+  .col-sm-4
+    %table.table
+      <%- for attribute in attributes -%>
+      %tr
+        %th <%= attribute.human_name %>
+        %td= @<%= singular_table_name %>.<%= attribute.name %>
+      <%- end -%>

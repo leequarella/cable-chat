@@ -1,0 +1,43 @@
+= form_for @user, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @user.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .input-group
+    %span.input-group-addon= f.label :first_name
+    = f.text_field :first_name, class: 'form-control'
+  .input-group
+    %span.input-group-addon= f.label :last_name
+    = f.text_field :last_name, class: 'form-control'
+  .input-group
+    %span.input-group-addon= f.label :email
+    = f.text_field :email, class: 'form-control'
+  .input-group
+    %span.input-group-addon= f.label :password
+    = f.text_field :password, class: "form-control"
+  .input-group
+    %span.input-group-addon= f.label :password
+    = f.text_field :password_confirmation, class: "form-control"
+
+  -if current_user.is? "super"
+    .input-group
+      %span.input-group-addon= f.label :active
+      = f.check_box :active, class: "switch"
+
+    -for role in User.possible_roles
+      -next if role == "super" && !current_user.is?("super")
+      = check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}
+      = label_tag "user_roles_#{role}", role.humanize
+      %br
+    = hidden_field_tag "user[roles][]", ""
+
+  .input-group
+    %br
+    = f.submit class: 'btn btn-primary'
