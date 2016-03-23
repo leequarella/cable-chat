@@ -1,4 +1,4 @@
-App.messages = App.cable.subscriptions.create "MessagesChannel",
+App.users = App.cable.subscriptions.create "UsersChannel",
   connected: ->
     console.log "Connected to messages"
 

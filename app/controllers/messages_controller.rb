@@ -24,22 +24,17 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    ActionCable.server.broadcast 'messages',
-      message: params[:message][:body],
-      username: cookies.signed[:username]
+    if params[:message][:body] == "2"
+      ActionCable.server.broadcast 'users:2',
+        message: "yoinks",
+        username: "PM"
+    else
+      ActionCable.server.broadcast 'messages',
+        message: params[:message][:body],
+        username: cookies.signed[:username]
+    end
 
     head :ok
-    #@message = Message.new(message_params)
-
-    #respond_to do |format|
-    #  if @message.save
-    #    format.html { redirect_to @message, notice: 'Message was successfully created.' }
-    #    format.json { render :show, status: :created, location: @message }
-    #  else
-    #    format.html { render :new }
-    #    format.json { render json: @message.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
   # PATCH/PUT /messages/1
